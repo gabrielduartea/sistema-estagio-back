@@ -3,8 +3,6 @@ export interface IEstagioDTO {
   estudanteId: number;
   empresaId: number;
   professorId: number;
-  nome: string;
-  telefone: string;
   supervisor: string;
   remuneracao: number;
   ajuda: number;
@@ -26,8 +24,6 @@ export class EstagioDTO implements IEstagioDTO {
   estudanteId: number;
   empresaId: number;
   professorId: number;
-  nome: string;
-  telefone: string;
   supervisor: string;
   remuneracao: number;
   ajuda: number;

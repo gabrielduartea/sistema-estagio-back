@@ -2,17 +2,17 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('periodo', {
+    await queryInterface.createTable('estagios', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      estudante_id: {
+      aluno_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'estudante',
+          model: 'aluno',
           key: 'id',
         },
       },
@@ -29,19 +29,6 @@ module.exports = {
           model: 'professor',
           key: 'id',
         },
-      },
-      estagio_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'estagio',
-          key: 'id',
-        },
-      },
-      nome: {
-        type: Sequelize.STRING,
-      },
-      telefone: {
-        type: Sequelize.STRING,
       },
       supervisor: {
         type: Sequelize.STRING,
@@ -95,6 +82,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('periodo');
+    await queryInterface.dropTable('estagio');
   },
 };

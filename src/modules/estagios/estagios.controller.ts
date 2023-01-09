@@ -35,13 +35,11 @@ export class EstagiosController {
     return estagio;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Post('create')
   async create(@Body() estagio: EstagioDTO, @Request() req): Promise<Estagio> {
     return await this.estagiosService.create(estagio);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id') id: number,
@@ -58,7 +56,6 @@ export class EstagiosController {
     return updatedEstagio;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   async remove(@Param('id') id: number, @Request() req) {
     const deleted = await this.estagiosService.delete(id);

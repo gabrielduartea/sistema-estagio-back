@@ -1,13 +1,13 @@
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
-@Table
+@Table({
+  timestamps: true,
+  schema: 'public',
+  tableName: 'user',
+  createdAt: 'dataInclusao',
+  updatedAt: 'dataAlteracao',
+})
 export class User extends Model<User> {
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  name: string;
-
   @Column({
     type: DataType.STRING,
     unique: true,
@@ -20,4 +20,28 @@ export class User extends Model<User> {
     allowNull: false,
   })
   password: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  tipo: number;
+
+  @Column({
+    allowNull: false,
+    field: 'dataInclusao',
+    type: DataType.DATE,
+    comment: 'Data de inclusão do registro.',
+    defaultValue: DataType.NOW,
+  })
+  dataInclusao: Date;
+
+  @Column({
+    allowNull: false,
+    field: 'dataAlteracao',
+    type: DataType.DATE,
+    comment: 'Data da última alteração.',
+    defaultValue: DataType.NOW,
+  })
+  dataAlteracao: Date;
 }

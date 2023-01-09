@@ -35,13 +35,11 @@ export class CursosController {
     return curso;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Post('create')
-  async create(@Body() curso: CursoDTO, @Request() req): Promise<Curso> {
+  async create(@Body() curso: CursoDTO): Promise<Curso> {
     return await this.cursosService.create(curso);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id') id: number,
@@ -58,7 +56,6 @@ export class CursosController {
     return updatedCursos;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   async remove(@Param('id') id: number, @Request() req) {
     const deleted = await this.cursosService.delete(id);

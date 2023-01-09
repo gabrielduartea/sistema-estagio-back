@@ -35,13 +35,11 @@ export class AlunosController {
     return aluno;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Post('create')
-  async create(@Body() aluno: AlunoDto, @Request() req): Promise<Aluno> {
+  async create(@Body() aluno: AlunoDto): Promise<Aluno> {
     return await this.alunosService.create(aluno);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id') id: number,

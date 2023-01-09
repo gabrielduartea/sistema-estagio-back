@@ -57,22 +57,6 @@ export class Estagio extends Model<Estagio> {
   @Column({
     type: DataType.TEXT,
     allowNull: false,
-    field: 'nome',
-    comment: 'Nome do aluno',
-  })
-  nome: string;
-
-  @Column({
-    type: DataType.TEXT,
-    allowNull: false,
-    field: 'telefone',
-    comment: 'Telefone do aluno',
-  })
-  telefone: string;
-
-  @Column({
-    type: DataType.TEXT,
-    allowNull: false,
     field: 'supervisor',
     comment: 'Supervisor do aluno',
   })
@@ -97,7 +81,7 @@ export class Estagio extends Model<Estagio> {
   @Column({
     type: DataType.TEXT,
     allowNull: false,
-    field: 'horasTrabalhoSemanais',
+    field: 'horas_trabalho_semanais',
     comment: 'horas de trabalho semanais do aluno',
   })
   horasTrabalhoSemanais: string;
@@ -105,7 +89,7 @@ export class Estagio extends Model<Estagio> {
   @Column({
     type: DataType.TEXT,
     allowNull: false,
-    field: 'codigoSeguroSaude',
+    field: 'codigo_seguro_saude',
     comment: 'codigo Seguro Saude do aluno',
   })
   codigoSeguroSaude: string;
@@ -113,7 +97,7 @@ export class Estagio extends Model<Estagio> {
   @Column({
     type: DataType.TEXT,
     allowNull: false,
-    field: 'companhiaSeguroSaude',
+    field: 'companhia_seguro_saude',
     comment: 'companhia Seguro Saude do aluno',
   })
   companhiaSeguroSaude: string;

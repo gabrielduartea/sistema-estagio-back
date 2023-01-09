@@ -3,7 +3,7 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 @Table({
   timestamps: true,
   schema: 'public',
-  tableName: 'cursos',
+  tableName: 'curso',
   createdAt: 'dataInclusao',
   updatedAt: 'dataAlteracao',
 })

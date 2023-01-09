@@ -2,7 +2,7 @@ import { IsNotEmpty, MinLength, IsEmail } from 'class-validator';
 
 export class UserDto {
   @IsNotEmpty()
-  readonly name: string;
+  readonly tipo: number;
 
   @IsNotEmpty()
   @IsEmail()
@@ -11,4 +11,6 @@ export class UserDto {
   @IsNotEmpty()
   @MinLength(6)
   readonly password: string;
+  readonly dataInclusao: Date;
+  readonly dataAlteracao: Date;
 }

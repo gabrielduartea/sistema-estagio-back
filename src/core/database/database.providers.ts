@@ -4,6 +4,10 @@ import { databaseConfig } from './database.config';
 import { User } from '../../modules/users/user.entity';
 import { Post } from 'src/modules/posts/post.entity';
 import { Professor } from 'src/modules/professores/professor.entity';
+import { Aluno } from 'src/modules/alunos/aluno.entity';
+import { Curso } from 'src/modules/cursos/curso.entity';
+import { Empresa } from 'src/modules/empresas/empresa.entity';
+import { Estagio } from 'src/modules/estagios/estagio.entity';
 
 export const databaseProviders = [
   {
@@ -24,7 +28,15 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Post, Professor]);
+      sequelize.addModels([
+        User,
+        Post,
+        Professor,
+        Aluno,
+        Curso,
+        Empresa,
+        Estagio,
+      ]);
       await sequelize.sync();
       return sequelize;
     },

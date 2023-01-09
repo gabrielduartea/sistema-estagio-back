@@ -8,23 +8,28 @@ export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
-  ) { }
+  ) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
     const user = await this.usersService.findOneByEmail(username);
     if (user) {
       const password = user.password;
-      return this.comparePassword(pass, password);
+      const acesso = {
+        validate: await this.comparePassword(pass, password),
+        usuario: user,
+      };
+      return acesso;
     }
     return null;
   }
 
   async login(user: any) {
     const validate = await this.validateUser(user.email, user.password);
-    if (validate === true) {
+    if (validate) {
       const payload = { username: user.username, sub: user.userId };
       return {
         access_token: this.jwtService.sign(payload),
+        user: validate.usuario,
       };
     } else {
       throw new UnauthorizedException();
@@ -60,6 +65,15 @@ export class AuthService {
 
   public async carregarUser(email) {
     const user = await this.usersService.findOneByEmail(email);
+    return user;
+  }
+
+  public async findAll() {
+    return await this.usersService.findAll();
+  }
+
+  public async findOne(id) {
+    const user = await this.usersService.findOneById(id);
     return user;
   }
 }

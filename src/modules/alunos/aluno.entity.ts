@@ -50,6 +50,22 @@ export class Aluno extends Model<Aluno> {
   telefone: string;
 
   @Column({
+    type: DataType.TEXT,
+    allowNull: false,
+    field: 'enderesso',
+    comment: 'enderesso do aluno',
+  })
+  enderesso: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: false,
+    field: 'matricula',
+    comment: 'matricula do aluno',
+  })
+  matricula: string;
+
+  @Column({
     allowNull: false,
     field: 'data_inclusao',
     type: DataType.DATE,
@@ -76,11 +92,11 @@ export class Aluno extends Model<Aluno> {
   cpf: string;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'curso_id',
     type: DataType.INTEGER,
     comment: 'ID do curso',
   })
   @ForeignKey(() => Curso)
-  cursoId: number;
+  cursoId?: number;
 }

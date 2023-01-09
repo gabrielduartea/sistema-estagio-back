@@ -3,6 +3,7 @@ export interface IEmpresaDTO {
   nome: string;
   email: string;
   telefone: string;
+  enderesso: string;
   dataInclusao: Date;
   dataAlteracao: Date;
 }
@@ -12,6 +13,7 @@ export class EmpresaDTO implements IEmpresaDTO {
   nome: string;
   email: string;
   telefone: string;
+  enderesso: string;
   dataInclusao: Date;
   dataAlteracao: Date;
 }

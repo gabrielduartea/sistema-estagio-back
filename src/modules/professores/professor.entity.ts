@@ -3,7 +3,7 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 @Table({
   timestamps: true,
   schema: 'public',
-  tableName: 'professores',
+  tableName: 'professor',
   createdAt: 'dataInclusao',
   updatedAt: 'dataAlteracao',
 })
@@ -33,6 +33,14 @@ export class Professor extends Model<Professor> {
     comment: 'Email de contato do professor',
   })
   email: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: false,
+    field: 'codigo_professor',
+    comment: 'Email de contato do professor',
+  })
+  codigoProfessor: string;
 
   @Column({
     type: DataType.TEXT,

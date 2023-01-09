@@ -35,7 +35,6 @@ export class ProfessoresController {
     return professor;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Post('create')
   async create(
     @Body() professor: ProfessorDto,
@@ -44,7 +43,6 @@ export class ProfessoresController {
     return await this.professoresService.create(professor);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id') id: number,
@@ -61,7 +59,6 @@ export class ProfessoresController {
     return updatedProfessores;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   async remove(@Param('id') id: number, @Request() req) {
     const deleted = await this.professoresService.delete(id);

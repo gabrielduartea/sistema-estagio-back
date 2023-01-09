@@ -3,7 +3,7 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 @Table({
   timestamps: true,
   schema: 'public',
-  tableName: 'empresas',
+  tableName: 'empresa',
   createdAt: 'dataInclusao',
   updatedAt: 'dataAlteracao',
 })
@@ -33,6 +33,22 @@ export class Empresa extends Model<Empresa> {
     comment: 'Email de contato da empresa',
   })
   email: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: false,
+    field: 'enderesso',
+    comment: 'enderesso de contato da empresa',
+  })
+  enderesso: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: false,
+    field: 'cnpj',
+    comment: 'cnpj da empresa',
+  })
+  cnpj: string;
 
   @Column({
     type: DataType.TEXT,

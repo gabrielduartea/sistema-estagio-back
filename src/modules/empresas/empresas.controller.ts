@@ -35,13 +35,11 @@ export class EmpresasController {
     return empresa;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Post('create')
   async create(@Body() empresa: EmpresaDTO, @Request() req): Promise<Empresa> {
     return await this.empresasService.create(empresa);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id') id: number,
@@ -58,7 +56,6 @@ export class EmpresasController {
     return updatedEmpresas;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   async remove(@Param('id') id: number, @Request() req) {
     const deleted = await this.empresasService.delete(id);
