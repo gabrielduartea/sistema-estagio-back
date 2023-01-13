@@ -14,6 +14,8 @@ async function bootstrap() {
     );
     next();
   });
-  await app.listen(3003);
+  await app.listen(process.env.DBPORT, () =>
+    console.log(`Server running on port ${process.env.DBPORT}`),
+  );
 }
 bootstrap();
