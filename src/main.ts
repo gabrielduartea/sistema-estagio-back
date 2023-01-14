@@ -8,6 +8,8 @@ async function bootstrap() {
   app.use(cors());
   app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(new ValidateInputPipe());
-  await app.listen(3003, () => console.log(`Server running on port ${3003}`));
+  await app.listen(3003, () =>
+    console.log(`Server running on port $?${process.env.DB_PORT}`),
+  );
 }
 bootstrap();
