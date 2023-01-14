@@ -14,6 +14,7 @@ async function bootstrap() {
     );
     next();
   });
+  app.enableCors();
   await app.listen(process.env.DBPORT, () =>
     console.log(`Server running on port ${process.env.DBPORT}`),
   );
