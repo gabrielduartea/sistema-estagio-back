@@ -1,23 +1,28 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { join } from 'path';
 import { AppModule } from './app.module';
-import { ValidateInputPipe } from './core/pipes/validate.pipe';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.enableCors({
-    origin: [
-      'https://gestagio.vercel.app',
-      'localhost:3000',
-      'gestagio-gabrielduartea.vercel.app',
-    ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true,
+
+  app.useStaticAssets(join(__dirname, '..', 'public'));
+  app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app.setViewEngine('hbs');
+
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+    next();
   });
-  app.setGlobalPrefix('api/v1');
-  app.useGlobalPipes(new ValidateInputPipe());
-  await app.listen(process.env.DB_PORT || 5000, () =>
-    console.log(`Server running on port ${process.env.DB_PORT}`),
-  );
+
+  app.enableCors({
+    allowedHeaders: '*',
+    origin: '*',
+  });
+
+  await app.listen(3003);
 }
+
 bootstrap();
