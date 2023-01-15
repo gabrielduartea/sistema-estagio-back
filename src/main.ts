@@ -16,8 +16,8 @@ async function bootstrap() {
   });
   app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(new ValidateInputPipe());
-  await app.listen(3003, () =>
-    console.log(`Server running on port $?${process.env.DB_PORT}`),
+  await app.listen(process.env.DB_PORT, () =>
+    console.log(`Server running on port ${process.env.DB_PORT}`),
   );
 }
 bootstrap();
