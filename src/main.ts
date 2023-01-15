@@ -6,7 +6,11 @@ import { ValidateInputPipe } from './core/pipes/validate.pipe';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: [
+      'https://gestagio.vercel.app',
+      'localhost:3000',
+      'gestagio-gabrielduartea.vercel.app',
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
