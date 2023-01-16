@@ -2,7 +2,6 @@ import { Sequelize } from 'sequelize-typescript';
 import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 import { User } from '../../modules/users/user.entity';
-import { Post } from 'src/modules/posts/post.entity';
 import { Professor } from 'src/modules/professores/professor.entity';
 import { Aluno } from 'src/modules/alunos/aluno.entity';
 import { Curso } from 'src/modules/cursos/curso.entity';
@@ -28,15 +27,7 @@ export const databaseProviders = [
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([
-        User,
-        Post,
-        Professor,
-        Aluno,
-        Curso,
-        Empresa,
-        Estagio,
-      ]);
+      sequelize.addModels([User, Professor, Aluno, Curso, Empresa, Estagio]);
       await sequelize.sync();
       return sequelize;
     },

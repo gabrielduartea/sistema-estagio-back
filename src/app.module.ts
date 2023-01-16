@@ -5,7 +5,6 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './core/database/database.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { PostsModule } from './modules/posts/posts.module';
 import { ProfessoresModule } from './modules/professores/professores.module';
 import { ProfessoresService } from './modules/professores/professores.service';
 import { AlunosService } from './modules/alunos/alunos.service';
@@ -25,7 +24,6 @@ import { PeriodosModule } from './modules/periodos/periodos.module';
     ConfigModule.forRoot({ isGlobal: true }),
     UsersModule,
     AuthModule,
-    PostsModule,
     ProfessoresModule,
     AlunosModule,
     CursosModule,
