@@ -37,10 +37,10 @@ export class Empresa extends Model<Empresa> {
   @Column({
     type: DataType.TEXT,
     allowNull: false,
-    field: 'enderesso',
-    comment: 'enderesso de contato da empresa',
+    field: 'endereco',
+    comment: 'endereço de contato da empresa',
   })
-  enderesso: string;
+  endereco: string;
 
   @Column({
     type: DataType.TEXT,

@@ -35,7 +35,6 @@ export class SupervisoresController {
     return supervisor;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Post('create')
   async create(
     @Body() supervisor: SupervisorDto,
@@ -44,7 +43,6 @@ export class SupervisoresController {
     return await this.supervisoresService.create(supervisor);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id') id: number,
@@ -61,7 +59,6 @@ export class SupervisoresController {
     return updatedSupervisores;
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   async remove(@Param('id') id: number, @Request() req) {
     const deleted = await this.supervisoresService.delete(id);
@@ -71,5 +68,10 @@ export class SupervisoresController {
     }
 
     return 'Successfully deleted';
+  }
+
+  @Get('findAllEmpresa/:id')
+  async findAllEmpresa(@Param('id') id: number) {
+    return await this.supervisoresService.findAllEmpresa(id);
   }
 }

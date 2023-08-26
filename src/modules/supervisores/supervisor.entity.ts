@@ -10,7 +10,7 @@ import { Empresa } from '../empresas/empresa.entity';
 @Table({
   timestamps: true,
   schema: 'public',
-  tableName: 'supervisores',
+  tableName: 'supervisor',
   createdAt: 'dataInclusao',
   updatedAt: 'dataAlteracao',
 })

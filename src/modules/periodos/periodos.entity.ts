@@ -5,7 +5,7 @@ import {
   DataType,
   ForeignKey,
 } from 'sequelize-typescript';
-import { Aluno } from '../alunos/aluno.entity';
+import { Estudante } from '../estudantes/estudante.entity';
 import { Empresa } from '../empresas/empresa.entity';
 import { Estagio } from '../estagios/estagio.entity';
 import { Professor } from '../professores/professor.entity';
@@ -30,12 +30,12 @@ export class Periodo extends Model<Periodo> {
 
   @Column({
     allowNull: false,
-    field: 'aluno_id',
+    field: 'estudante_id',
     type: DataType.INTEGER,
-    comment: 'ID da aluno',
+    comment: 'ID da estudante',
   })
-  @ForeignKey(() => Aluno)
-  alunoId: number;
+  @ForeignKey(() => Estudante)
+  estudanteId: number;
 
   @Column({
     allowNull: false,
@@ -68,7 +68,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'nome',
-    comment: 'Nome do aluno',
+    comment: 'Nome do estudante',
   })
   nome: string;
 
@@ -76,7 +76,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'telefone',
-    comment: 'Telefone do aluno',
+    comment: 'Telefone do estudante',
   })
   telefone: string;
 
@@ -84,7 +84,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'supervisor',
-    comment: 'Supervisor do aluno',
+    comment: 'Supervisor do estudante',
   })
   supervisor: string;
 
@@ -108,7 +108,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'horasTrabalhoSemanais',
-    comment: 'horas de trabalho semanais do aluno',
+    comment: 'horas de trabalho semanais do estudante',
   })
   horasTrabalhoSemanais: string;
 
@@ -116,7 +116,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'codigoSeguroSaude',
-    comment: 'codigo Seguro Saude do aluno',
+    comment: 'codigo Seguro Saude do estudante',
   })
   codigoSeguroSaude: string;
 
@@ -124,7 +124,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'companhiaSeguroSaude',
-    comment: 'companhia Seguro Saude do aluno',
+    comment: 'companhia Seguro Saude do estudante',
   })
   companhiaSeguroSaude: string;
 
@@ -132,7 +132,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'categoria',
-    comment: 'categoria do aluno',
+    comment: 'categoria do estudante',
   })
   categoria: string;
 
@@ -140,7 +140,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'modalidade',
-    comment: 'modalidade do aluno',
+    comment: 'modalidade do estudante',
   })
   modalidade: string;
 
@@ -148,7 +148,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'plano_atividades',
-    comment: 'plano de tividades do aluno',
+    comment: 'plano de tividades do estudante',
   })
   planoAtividades: string;
 
@@ -156,7 +156,7 @@ export class Periodo extends Model<Periodo> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'relatorios',
-    comment: 'relatorios do aluno',
+    comment: 'relatorios do estudante',
   })
   relatorios: string;
 

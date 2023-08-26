@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('aluno', {
+    await queryInterface.createTable('estudante', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -28,7 +28,10 @@ module.exports = {
       cpf: {
         type: Sequelize.STRING,
       },
-      enderesso: {
+      endereco: {
+        type: Sequelize.STRING,
+      },
+      matricula: {
         type: Sequelize.STRING,
       },
       data_inclusao: {
@@ -42,6 +45,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('aluno');
+    await queryInterface.dropTable('estudante');
   },
 };

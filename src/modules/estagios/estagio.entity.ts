@@ -4,15 +4,17 @@ import {
   Model,
   DataType,
   ForeignKey,
+  HasMany,
 } from 'sequelize-typescript';
-import { Aluno } from '../alunos/aluno.entity';
+import { Estudante } from '../estudantes/estudante.entity';
 import { Empresa } from '../empresas/empresa.entity';
 import { Professor } from '../professores/professor.entity';
+import { Supervisor } from '../supervisores/supervisor.entity';
 
 @Table({
   timestamps: true,
   schema: 'public',
-  tableName: 'estagios',
+  tableName: 'estagio',
   createdAt: 'dataInclusao',
   updatedAt: 'dataAlteracao',
 })
@@ -29,12 +31,12 @@ export class Estagio extends Model<Estagio> {
 
   @Column({
     allowNull: false,
-    field: 'aluno_id',
+    field: 'estudante_id',
     type: DataType.INTEGER,
-    comment: 'ID da aluno',
+    comment: 'ID da estudante',
   })
-  @ForeignKey(() => Aluno)
-  alunoId: number;
+  @ForeignKey(() => Estudante)
+  estudanteId: number;
 
   @Column({
     allowNull: false,
@@ -55,17 +57,18 @@ export class Estagio extends Model<Estagio> {
   professorId: number;
 
   @Column({
-    type: DataType.TEXT,
+    type: DataType.INTEGER,
     allowNull: false,
-    field: 'supervisor',
-    comment: 'Supervisor do aluno',
+    field: 'supervisor_id',
+    comment: 'Supervisor do estudante',
   })
-  supervisor: string;
+  @ForeignKey(() => Supervisor)
+  supervisorId: number;
 
   @Column({
     allowNull: false,
     field: 'remuneracao',
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
     comment: 'Remuneração',
   })
   remuneracao: number;
@@ -73,7 +76,7 @@ export class Estagio extends Model<Estagio> {
   @Column({
     allowNull: false,
     field: 'ajuda',
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
     comment: 'Ajuda',
   })
   ajuda: number;
@@ -82,7 +85,7 @@ export class Estagio extends Model<Estagio> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'horas_trabalho_semanais',
-    comment: 'horas de trabalho semanais do aluno',
+    comment: 'horas de trabalho semanais do estudante',
   })
   horasTrabalhoSemanais: string;
 
@@ -90,7 +93,7 @@ export class Estagio extends Model<Estagio> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'codigo_seguro_saude',
-    comment: 'codigo Seguro Saude do aluno',
+    comment: 'codigo Seguro Saude do estudante',
   })
   codigoSeguroSaude: string;
 
@@ -98,7 +101,7 @@ export class Estagio extends Model<Estagio> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'companhia_seguro_saude',
-    comment: 'companhia Seguro Saude do aluno',
+    comment: 'companhia Seguro Saude do estudante',
   })
   companhiaSeguroSaude: string;
 
@@ -106,7 +109,7 @@ export class Estagio extends Model<Estagio> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'categoria',
-    comment: 'categoria do aluno',
+    comment: 'categoria do estudante',
   })
   categoria: string;
 
@@ -114,7 +117,7 @@ export class Estagio extends Model<Estagio> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'modalidade',
-    comment: 'modalidade do aluno',
+    comment: 'modalidade do estudante',
   })
   modalidade: string;
 
@@ -122,7 +125,7 @@ export class Estagio extends Model<Estagio> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'plano_atividades',
-    comment: 'plano de tividades do aluno',
+    comment: 'plano de tividades do estudante',
   })
   planoAtividades: string;
 
@@ -130,7 +133,7 @@ export class Estagio extends Model<Estagio> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'relatorios',
-    comment: 'relatorios do aluno',
+    comment: 'relatorios do estudante',
   })
   relatorios: string;
 
@@ -177,4 +180,30 @@ export class Estagio extends Model<Estagio> {
     defaultValue: DataType.NOW,
   })
   dataAlteracao: Date;
+
+  @Column({
+    allowNull: false,
+    field: 'renovacao',
+    type: DataType.JSON,
+    defaultValue: false,
+  })
+  renovacao?: JSON;
+
+  @HasMany(() => Empresa, {
+    foreignKey: 'id',
+    sourceKey: 'empresaId',
+  })
+  empresa: Empresa;
+
+  @HasMany(() => Estudante, {
+    foreignKey: 'id',
+    sourceKey: 'estudanteId',
+  })
+  estudante: Estudante;
+
+  @HasMany(() => Supervisor, {
+    foreignKey: 'id',
+    sourceKey: 'supervisorId',
+  })
+  supervisor: Supervisor;
 }

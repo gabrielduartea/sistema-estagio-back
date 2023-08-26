@@ -3,7 +3,7 @@ export interface IEstagioDTO {
   estudanteId: number;
   empresaId: number;
   professorId: number;
-  supervisor: string;
+  supervisorId: number;
   remuneracao: number;
   ajuda: number;
   codigoSeguroSaude: string;
@@ -18,13 +18,14 @@ export interface IEstagioDTO {
   dataFinal: Date;
   dataInclusao: Date;
   dataAlteracao: Date;
+  renovacao?: JSON;
 }
 export class EstagioDTO implements IEstagioDTO {
   id: number;
   estudanteId: number;
   empresaId: number;
   professorId: number;
-  supervisor: string;
+  supervisorId: number;
   remuneracao: number;
   ajuda: number;
   codigoSeguroSaude: string;
@@ -39,4 +40,5 @@ export class EstagioDTO implements IEstagioDTO {
   dataFinal: Date;
   dataInclusao: Date;
   dataAlteracao: Date;
+  renovacao?: JSON;
 }

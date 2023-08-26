@@ -4,17 +4,20 @@ import {
   Model,
   DataType,
   ForeignKey,
+  HasMany,
+  BelongsTo,
+  BelongsToMany,
 } from 'sequelize-typescript';
 import { Curso } from '../cursos/curso.entity';
 
 @Table({
   timestamps: true,
   schema: 'public',
-  tableName: 'aluno',
+  tableName: 'estudante',
   createdAt: 'dataInclusao',
   updatedAt: 'dataAlteracao',
 })
-export class Aluno extends Model<Aluno> {
+export class Estudante extends Model<Estudante> {
   @Column({
     allowNull: true,
     autoIncrement: true,
@@ -29,7 +32,7 @@ export class Aluno extends Model<Aluno> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'nome',
-    comment: 'Nome do aluno',
+    comment: 'Nome do estudante',
   })
   nome: string;
 
@@ -37,7 +40,7 @@ export class Aluno extends Model<Aluno> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'email',
-    comment: 'Email de contato do aluno',
+    comment: 'Email de contato do estudante',
   })
   email: string;
 
@@ -45,23 +48,23 @@ export class Aluno extends Model<Aluno> {
     type: DataType.TEXT,
     allowNull: false,
     field: 'telefone',
-    comment: 'Telefone do aluno',
+    comment: 'Telefone do estudante',
   })
   telefone: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: false,
-    field: 'enderesso',
-    comment: 'enderesso do aluno',
+    field: 'endereco',
+    comment: 'endereço do estudante',
   })
-  enderesso: string;
+  endereco: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: false,
     field: 'matricula',
-    comment: 'matricula do aluno',
+    comment: 'matricula do estudante',
   })
   matricula: string;
 
@@ -98,5 +101,11 @@ export class Aluno extends Model<Aluno> {
     comment: 'ID do curso',
   })
   @ForeignKey(() => Curso)
-  cursoId?: number;
+  cursoId: number;
+
+  @HasMany(() => Curso, {
+    foreignKey: 'id',
+    sourceKey: 'cursoId',
+  })
+  curso: Curso;
 }

@@ -26,7 +26,7 @@ export class EstagiosController {
 
   @Get(':id')
   async findOne(@Param('id') id: number): Promise<Estagio> {
-    const estagio = await this.estagiosService.findOne(id);
+    const estagio = await this.estagiosService.findOne(Number(id));
 
     if (!estagio) {
       throw new NotFoundException("This estagio doesn't exist");
@@ -65,5 +65,36 @@ export class EstagiosController {
     }
 
     return 'Successfully deleted';
+  }
+
+  @Get('findAllEstagio/:id')
+  async findAllEstagio(@Param('id') id: number): Promise<Estagio[]> {
+    const estagio = await this.estagiosService.findAllEstagios(Number(id));
+
+    if (!estagio) {
+      throw new NotFoundException("This estagio doesn't exist");
+    }
+
+    return estagio;
+  }
+
+  @Get('relatorioEstagiosPorProfessor/:data')
+  async gerarRelatorioEstagiosPorProfessor(@Param() data) {
+    const filtros = JSON.parse(data.data);
+    return await this.estagiosService.gerarRelatorioEstagiosPorProfessor(
+      filtros,
+    );
+  }
+
+  @Get('relatorioEstagiosPorEmpresa/:data')
+  async gerarrelatorioEstagiosPorEmpresa(@Param() data) {
+    const filtros = JSON.parse(data.data);
+    return await this.estagiosService.gerarRelatorioEstagiosPorEmpresa(filtros);
+  }
+
+  @Get('relatorioEstagios/:data')
+  async gerarrelatorioEstagios(@Param() data) {
+    const filtros = JSON.parse(data.data);
+    return await this.estagiosService.gerarRelatorioEstagios(filtros);
   }
 }

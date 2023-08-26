@@ -9,11 +9,13 @@ import {
   NotFoundException,
   UseGuards,
   Request,
+  Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ProfessorDto } from './dto/professor.dto';
 import { Professor } from './professor.entity';
 import { ProfessoresService } from './professores.service';
+import { request } from 'http';
 
 @Controller('professores')
 export class ProfessoresController {
@@ -24,7 +26,7 @@ export class ProfessoresController {
     return await this.professoresService.findAll();
   }
 
-  @Get(':id')
+  @Get(':id/findOne')
   async findOne(@Param('id') id: number): Promise<Professor> {
     const professor = await this.professoresService.findOne(id);
 
@@ -68,5 +70,21 @@ export class ProfessoresController {
     }
 
     return 'Successfully deleted';
+  }
+
+  @Get('relatorioNumeroEstagiarios/:status')
+  async gerarRelatorioNumeroEstagiarios(@Param('status') status) {
+    const filtros = status;
+    return await this.professoresService.gerarRelatorioNumeroEstagiarios(
+      filtros,
+    );
+  }
+
+  @Get('relatorioEstagiosPorProfessor/:data')
+  async gerarRelatorioEstagiosPorProfessor(@Param() data) {
+    const filtros = JSON.parse(data.data);
+    return await this.professoresService.gerarRelatorioEstagiosPorProfessor(
+      filtros,
+    );
   }
 }

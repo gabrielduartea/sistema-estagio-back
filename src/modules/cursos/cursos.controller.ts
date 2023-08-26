@@ -34,9 +34,9 @@ export class CursosController {
 
     return curso;
   }
-
+  // @UseGuards(AuthGuard('jwt'))
   @Post('create')
-  async create(@Body() curso: CursoDTO): Promise<Curso> {
+  async create(@Body() curso: CursoDTO, @Request() req): Promise<Curso> {
     return await this.cursosService.create(curso);
   }
 

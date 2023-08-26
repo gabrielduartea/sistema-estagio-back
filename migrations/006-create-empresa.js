@@ -18,7 +18,10 @@ module.exports = {
       telefone: {
         type: Sequelize.STRING,
       },
-      enderesso: {
+      endereco: {
+        type: Sequelize.STRING,
+      },
+      cnpj: {
         type: Sequelize.STRING,
       },
       data_inclusao: {

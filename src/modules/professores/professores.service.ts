@@ -1,4 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
+import { QueryTypes } from 'sequelize';
 import { ProfessorDto } from './dto/professor.dto';
 import { Professor } from './professor.entity';
 
@@ -37,5 +38,49 @@ export class ProfessoresService {
       );
 
     return { numberOfAffectedRows, updatedProfessores };
+  }
+
+  async gerarRelatorioNumeroEstagiarios(status) {
+    let filtroStatus = `where status='${status}'`;
+    if (status == 'Todos') {
+      filtroStatus = ``;
+    }
+    const sql = `
+    select
+	nome,count(professor_id)
+from
+	professor
+left join estagio e on professor.id=professor_id
+${filtroStatus}
+group by nome
+    `;
+    const consultaItens = await Professor.sequelize.query(sql, {
+      type: QueryTypes.SELECT,
+    });
+    return consultaItens;
+  }
+
+  async gerarRelatorioEstagiosPorProfessor(filtros: any) {
+    const professorId = filtros.professorId;
+    const status = filtros.status;
+    let filtroStatus = `where status='${status}'`;
+    if (status == 'Todos') {
+      filtroStatus = ``;
+    }
+    const sql = `
+    select
+	nome,count(professor_id)
+from
+	professor
+left join estagio e on professor.id = professor_id
+left join estudante a on estudante.id = e.estudante_id 
+${filtroStatus}
+and id=${professorId}
+group by nome
+    `;
+    const consultaItens = await Professor.sequelize.query(sql, {
+      type: QueryTypes.SELECT,
+    });
+    return consultaItens;
   }
 }

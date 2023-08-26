@@ -1,7 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import * as cookieParser from 'cookie-parser';
 import { join } from 'path';
 import { AppModule } from './app.module';
+import { ValidateInputPipe } from './core/pipes/validate.pipe';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -10,10 +12,13 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
   app.setGlobalPrefix('api/v1');
+  app.use(cookieParser());
+  app.useGlobalPipes(new ValidateInputPipe());
   app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+    app.use(cookieParser());
     next();
   });
 
@@ -22,7 +27,7 @@ async function bootstrap() {
     origin: '*',
   });
 
-  await app.listen(process.env.PORT);
+  await app.listen(3003);
 }
 
 bootstrap();

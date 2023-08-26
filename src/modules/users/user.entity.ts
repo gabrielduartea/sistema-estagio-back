@@ -9,6 +9,14 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 })
 export class User extends Model<User> {
   @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  })
+  id: number;
+
+  @Column({
     type: DataType.STRING,
     unique: true,
     allowNull: false,
@@ -22,7 +30,7 @@ export class User extends Model<User> {
   password: string;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.INTEGER,
     allowNull: false,
   })
   tipo: number;

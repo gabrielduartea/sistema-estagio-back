@@ -13,7 +13,7 @@ import { jwtConstants } from './constants';
     PassportModule,
     UsersModule,
     JwtModule.register({
-      secret: jwtConstants.secret,
+      secret: process.env.JWTKEY,
       signOptions: { expiresIn: process.env.TOKEN_EXPIRATION },
     }),
   ],

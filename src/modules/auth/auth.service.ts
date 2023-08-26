@@ -10,30 +10,27 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(username: string, pass: string): Promise<any> {
+  async validateUser(username: string, pass: string) {
+    // find if user exist with this email
     const user = await this.usersService.findOneByEmail(username);
-    if (user) {
-      const password = user.password;
-      const acesso = {
-        validate: await this.comparePassword(pass, password),
-        usuario: user,
-      };
-      return acesso;
+    if (!user) {
+      return null;
     }
-    return null;
+
+    // find if user password match
+    const match = await this.comparePassword(pass, user.password);
+    if (!match) {
+      return null;
+    }
+
+    // tslint:disable-next-line: no-string-literal
+    const { password, ...result } = user['dataValues'];
+    return result;
   }
 
-  async login(user: any) {
-    const validate = await this.validateUser(user.email, user.password);
-    if (validate) {
-      const payload = { username: user.username, sub: user.userId };
-      return {
-        access_token: this.jwtService.sign(payload),
-        user: validate.usuario,
-      };
-    } else {
-      throw new UnauthorizedException();
-    }
+  public async login(user) {
+    const token = await this.generateToken(user);
+    return { user, token };
   }
 
   public async create(user) {

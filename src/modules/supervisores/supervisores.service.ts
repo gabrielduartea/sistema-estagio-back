@@ -25,6 +25,14 @@ export class SupervisoresService {
     });
   }
 
+  async findAllEmpresa(id): Promise<Supervisor[]> {
+    return await this.supervisoresRepository.findAll<Supervisor>({
+      where: {
+        empresaId: id,
+      },
+    });
+  }
+
   async delete(id) {
     return await this.supervisoresRepository.destroy({ where: { id } });
   }

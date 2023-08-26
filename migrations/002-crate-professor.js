@@ -18,6 +18,9 @@ module.exports = {
       telefone: {
         type: Sequelize.STRING,
       },
+      codigo_professor: {
+        type: Sequelize.STRING,
+      },
       data_inclusao: {
         allowNull: false,
         type: Sequelize.DATE,

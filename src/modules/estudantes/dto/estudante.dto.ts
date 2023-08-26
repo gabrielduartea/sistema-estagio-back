@@ -1,23 +1,23 @@
-export interface IAlunoDto {
+export interface IEstudanteDto {
   id: number;
   email: string;
   nome: string;
   cursoId: number;
   telefone: string;
   cpf: string;
-  enderesso: string;
+  endereco: string;
   dataInclusao: Date;
   dataAlteracao: Date;
 }
 
-export class AlunoDto implements IAlunoDto {
+export class EstudanteDto implements IEstudanteDto {
   id: number;
   email: string;
   nome: string;
   cursoId: number;
   telefone: string;
   cpf: string;
-  enderesso: string;
+  endereco: string;
   dataInclusao: Date;
   dataAlteracao: Date;
 }
