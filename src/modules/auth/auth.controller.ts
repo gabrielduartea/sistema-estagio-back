@@ -37,7 +37,7 @@ export class AuthController {
     return await this.authService.create(user);
   }
 
-  @Get(':token')
+  @Get('token/:token')
   async get(@Param('token') token: any) {
     try {
       const data: any = await this.jwtService.decode(token);

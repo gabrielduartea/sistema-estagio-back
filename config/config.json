@@ -1,24 +1,26 @@
 {
   "development": {
-    "username": "usuario",
-    "password": "12345",
-    "database": "sistemaestagioufvjm",
-    "host": "localhost",
+    "username": "gestagio",
+    "password": "p0gblIdxvebGwcOdPeW9",
+    "database": "gestagio_db",
+    "host": "gestagioufvjm.ckvavemu8ptw.us-east-1.rds.amazonaws.com",
     "dialect": "postgres",
     "port":5432
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "localhost",
-    "dialect": "mysql"
+    "username": "gestagio",
+    "password": "p0gblIdxvebGwcOdPeW9",
+    "database": "gestagio_db",
+    "host": "gestagioufvjm.ckvavemu8ptw.us-east-1.rds.amazonaws.com",
+    "dialect": "postgres",
+    "port":5432
+    
   },
   "production": {
-    "username": "usuario",
-    "password": "12345",
-    "database": "sistemaestagioufvjm",
-    "host": "localhost",
+    "username": "gestagio",
+    "password": "p0gblIdxvebGwcOdPeW9",
+    "database": "gestagio_db",
+    "host": "gestagioufvjm.ckvavemu8ptw.us-east-1.rds.amazonaws.com",
     "dialect": "postgres",
     "port":5432
   }
