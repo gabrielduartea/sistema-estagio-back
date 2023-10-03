@@ -143,7 +143,7 @@ left join professor p on
 left join estudante est on
     est.id = es.estudante_id
 left join supervisor s on
-    e.id = es.supervisor_id
+    s.id = es.supervisor_id
 where
 	es.empresa_id = ${empresaId}
   ${filtroStatus}`;
@@ -177,7 +177,7 @@ left join professor p on
 left join estudante a on
 	a.id = es.estudante_id
 left join supervisor s on
-	e.id = es.supervisor_id
+	s.id = es.supervisor_id
   ${filtroStatus}`;
     const consultaItens = await Estagio.sequelize.query(sql, {
       type: QueryTypes.SELECT,
