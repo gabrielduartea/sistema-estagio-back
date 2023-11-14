@@ -58,9 +58,6 @@ module.exports = {
       modalidade: {
         type: Sequelize.STRING,
       },
-      plano_atividades: {
-        type: Sequelize.STRING,
-      },
       relatorios: {
         type: Sequelize.STRING,
       },
@@ -85,6 +82,27 @@ module.exports = {
       },
       renovacao: {
         type: Sequelize.JSON,
+      },
+      plano_estagio: {
+        type: Sequelize.STRING,
+      },
+      aceite_orientador: {
+        type: Sequelize.STRING,
+      },
+      termo_aceite: {
+        type: Sequelize.STRING,
+      },
+      termo_aceite_url: {
+        type: Sequelize.STRING,
+      },
+      plano_estagio_url: {
+        type: Sequelize.STRING,
+      },
+      relatorio_url: {
+        type: Sequelize.STRING,
+      },
+      aceite_orientador_url: {
+        type: Sequelize.STRING,
       },
     });
   },

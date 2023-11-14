@@ -11,7 +11,6 @@ import { CursosModule } from './modules/cursos/cursos.module';
 import { EmpresasModule } from './modules/empresas/empresas.module';
 import { EstagiosModule } from './modules/estagios/estagios.module';
 import { SupervisoresModule } from './modules/supervisores/supervisores.module';
-import { PeriodosModule } from './modules/periodos/periodos.module';
 
 @Module({
   imports: [
@@ -25,7 +24,6 @@ import { PeriodosModule } from './modules/periodos/periodos.module';
     EmpresasModule,
     EstagiosModule,
     SupervisoresModule,
-    PeriodosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

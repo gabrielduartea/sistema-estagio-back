@@ -11,7 +11,6 @@ export interface IEstagioDTO {
   horasTrabalhoSemanais: string;
   categoria: string;
   modalidade: string;
-  planoAtividades: string;
   relatorios: string;
   status: string;
   dataInicial: Date;
@@ -19,6 +18,13 @@ export interface IEstagioDTO {
   dataInclusao: Date;
   dataAlteracao: Date;
   renovacao?: JSON;
+  planoEstagio?: string;
+  aceiteOrientador?: string;
+  termoAceite?: string;
+  termoAceiteUrl?: string;
+  planoEstagioUrl?: string;
+  relatorioUrl?: string;
+  aceiteOrientadorUrl?: string;
 }
 export class EstagioDTO implements IEstagioDTO {
   id: number;
@@ -33,7 +39,6 @@ export class EstagioDTO implements IEstagioDTO {
   horasTrabalhoSemanais: string;
   categoria: string;
   modalidade: string;
-  planoAtividades: string;
   relatorios: string;
   status: string;
   dataInicial: Date;
@@ -41,4 +46,11 @@ export class EstagioDTO implements IEstagioDTO {
   dataInclusao: Date;
   dataAlteracao: Date;
   renovacao?: JSON;
+  planoEstagio?: string;
+  aceiteOrientador?: string;
+  termoAceite?: string;
+  termoAceiteUrl?: string;
+  planoEstagioUrl?: string;
+  relatorioUrl?: string;
+  aceiteOrientadorUrl?: string;
 }

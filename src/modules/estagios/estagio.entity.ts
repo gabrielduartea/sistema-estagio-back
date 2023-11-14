@@ -20,7 +20,7 @@ import { Supervisor } from '../supervisores/supervisor.entity';
 })
 export class Estagio extends Model<Estagio> {
   @Column({
-    allowNull: true,
+    allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     field: 'id',
@@ -30,7 +30,7 @@ export class Estagio extends Model<Estagio> {
   id: number;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'estudante_id',
     type: DataType.INTEGER,
     comment: 'ID da estudante',
@@ -39,7 +39,7 @@ export class Estagio extends Model<Estagio> {
   estudanteId: number;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'empresa_id',
     type: DataType.INTEGER,
     comment: 'ID da empresa',
@@ -48,7 +48,7 @@ export class Estagio extends Model<Estagio> {
   empresaId: number;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'professor_id',
     type: DataType.INTEGER,
     comment: 'ID do professor',
@@ -58,7 +58,7 @@ export class Estagio extends Model<Estagio> {
 
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
     field: 'supervisor_id',
     comment: 'Supervisor do estudante',
   })
@@ -66,7 +66,7 @@ export class Estagio extends Model<Estagio> {
   supervisorId: number;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'remuneracao',
     type: DataType.FLOAT,
     comment: 'Remuneração',
@@ -74,7 +74,7 @@ export class Estagio extends Model<Estagio> {
   remuneracao: number;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'ajuda',
     type: DataType.FLOAT,
     comment: 'Ajuda',
@@ -83,7 +83,7 @@ export class Estagio extends Model<Estagio> {
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
     field: 'horas_trabalho_semanais',
     comment: 'horas de trabalho semanais do estudante',
   })
@@ -91,7 +91,7 @@ export class Estagio extends Model<Estagio> {
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
     field: 'codigo_seguro_saude',
     comment: 'codigo Seguro Saude do estudante',
   })
@@ -99,7 +99,7 @@ export class Estagio extends Model<Estagio> {
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
     field: 'companhia_seguro_saude',
     comment: 'companhia Seguro Saude do estudante',
   })
@@ -107,7 +107,7 @@ export class Estagio extends Model<Estagio> {
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
     field: 'categoria',
     comment: 'categoria do estudante',
   })
@@ -115,7 +115,7 @@ export class Estagio extends Model<Estagio> {
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
     field: 'modalidade',
     comment: 'modalidade do estudante',
   })
@@ -123,30 +123,22 @@ export class Estagio extends Model<Estagio> {
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
-    field: 'plano_atividades',
-    comment: 'plano de tividades do estudante',
-  })
-  planoAtividades: string;
-
-  @Column({
-    type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
     field: 'relatorios',
     comment: 'relatorios do estudante',
   })
-  relatorios: string;
+  relatorio: string;
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
     field: 'status',
     comment: ' Status',
   })
   status: string;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'data_inicial',
     type: DataType.DATE,
     comment: 'Data Inicial.',
@@ -155,7 +147,7 @@ export class Estagio extends Model<Estagio> {
   dataInicial: Date;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'data_final',
     type: DataType.DATE,
     comment: 'Data final.',
@@ -164,7 +156,7 @@ export class Estagio extends Model<Estagio> {
   dataFinal: Date;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'data_inclusao',
     type: DataType.DATE,
     comment: 'Data de inclusão do registro.',
@@ -173,7 +165,7 @@ export class Estagio extends Model<Estagio> {
   dataInclusao: Date;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'data_alteracao',
     type: DataType.DATE,
     comment: 'Data da última alteração.',
@@ -182,12 +174,68 @@ export class Estagio extends Model<Estagio> {
   dataAlteracao: Date;
 
   @Column({
-    allowNull: false,
+    allowNull: true,
     field: 'renovacao',
     type: DataType.JSON,
     defaultValue: false,
   })
   renovacao?: JSON;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'plano_estagio',
+    comment: 'plano de estagio do estudante',
+  })
+  planoEstagio?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'aceite_orientador',
+    comment: 'aceite do orientador do estudante',
+  })
+  aceiteOrientador?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'termo_aceite',
+    comment: 'relatorios do estudante',
+  })
+  termoAceite?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'termo_aceite_url',
+    comment: 'relatorios do estudante',
+  })
+  termoAceiteUrl?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'plano_estagio_url',
+    comment: 'relatorios do estudante',
+  })
+  planoEstagioUrl?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'relatorio_url',
+    comment: 'relatorios do estudante',
+  })
+  relatorioUrl?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'aceite_orientador_url',
+    comment: 'relatorios do estudante',
+  })
+  aceiteOrientadorUrl?: string;
 
   @HasMany(() => Empresa, {
     foreignKey: 'id',
