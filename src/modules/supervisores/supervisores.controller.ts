@@ -72,6 +72,7 @@ export class SupervisoresController {
 
   @Get('findAllEmpresa/:id')
   async findAllEmpresa(@Param('id') id: number) {
-    return await this.supervisoresService.findAllEmpresa(id);
+    const supervisor = await this.supervisoresService.findAllEmpresa(id);
+    return supervisor;
   }
 }

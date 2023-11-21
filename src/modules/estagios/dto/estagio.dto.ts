@@ -20,11 +20,17 @@ export interface IEstagioDTO {
   renovacao?: JSON;
   planoEstagio?: string;
   aceiteOrientador?: string;
-  termoAceite?: string;
-  termoAceiteUrl?: string;
+  termoCompromisso?: string;
+  termoCompromissoUrl?: string;
   planoEstagioUrl?: string;
   relatorioUrl?: string;
   aceiteOrientadorUrl?: string;
+  relatorio1?: null;
+  relatorio2?: null;
+  relatorio3?: null;
+  relatorio1Url?: null;
+  relatorio2Url?: null;
+  relatorio3Url?: null;
 }
 export class EstagioDTO implements IEstagioDTO {
   id: number;
@@ -48,9 +54,15 @@ export class EstagioDTO implements IEstagioDTO {
   renovacao?: JSON;
   planoEstagio?: string;
   aceiteOrientador?: string;
-  termoAceite?: string;
-  termoAceiteUrl?: string;
+  termoCompromisso?: string;
+  termoCompromissoUrl?: string;
   planoEstagioUrl?: string;
   relatorioUrl?: string;
   aceiteOrientadorUrl?: string;
+  relatorio1?: null;
+  relatorio2?: null;
+  relatorio3?: null;
+  relatorio1Url?: null;
+  relatorio2Url?: null;
+  relatorio3Url?: null;
 }

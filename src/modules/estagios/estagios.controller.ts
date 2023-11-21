@@ -97,4 +97,9 @@ export class EstagiosController {
     const filtros = JSON.parse(data.data);
     return await this.estagiosService.gerarRelatorioEstagios(filtros);
   }
+  @Post('renovarEstagios')
+  async renovarEstagio(@Body() data) {
+    const estagio = data;
+    return await this.estagiosService.renovarEstagio(estagio);
+  }
 }

@@ -89,10 +89,10 @@ module.exports = {
       aceite_orientador: {
         type: Sequelize.STRING,
       },
-      termo_aceite: {
+      termo_compromisso: {
         type: Sequelize.STRING,
       },
-      termo_aceite_url: {
+      termo_compromisso_url: {
         type: Sequelize.STRING,
       },
       plano_estagio_url: {
@@ -102,6 +102,30 @@ module.exports = {
         type: Sequelize.STRING,
       },
       aceite_orientador_url: {
+        type: Sequelize.STRING,
+      },
+      relatorio1: {
+        type: Sequelize.STRING,
+      },
+      relatorio1_url: {
+        type: Sequelize.STRING,
+      },
+      relatorio2: {
+        type: Sequelize.STRING,
+      },
+      relatorio2_url: {
+        type: Sequelize.STRING,
+      },
+      relatorio3: {
+        type: Sequelize.STRING,
+      },
+      relatorio3_url: {
+        type: Sequelize.STRING,
+      },
+      rescisao: {
+        type: Sequelize.STRING,
+      },
+      rescisao_url: {
         type: Sequelize.STRING,
       },
     });

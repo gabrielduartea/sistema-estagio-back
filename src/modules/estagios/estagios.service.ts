@@ -33,6 +33,9 @@ export class EstagiosService {
         {
           model: Supervisor,
         },
+        {
+          model: Professor,
+        },
       ],
     });
   }
@@ -46,6 +49,9 @@ export class EstagiosService {
         },
         {
           model: Empresa,
+        },
+        {
+          model: Supervisor,
         },
       ],
     });
@@ -68,9 +74,7 @@ export class EstagiosService {
   async findAllEstagios(id: number): Promise<Estagio[]> {
     return await this.estagiosRepository.findAll<Estagio>({
       where: {
-        renovacao: {
-          [Op.not]: null,
-        },
+        id,
       },
       include: [
         {
@@ -78,6 +82,12 @@ export class EstagiosService {
         },
         {
           model: Empresa,
+        },
+        {
+          model: Professor,
+        },
+        {
+          model: Supervisor,
         },
       ],
     });
@@ -183,5 +193,38 @@ left join supervisor s on
       type: QueryTypes.SELECT,
     });
     return consultaItens;
+  }
+
+  async renovarEstagio(data) {
+    const estagio = await Estagio.findOne({
+      where: {
+        id: data.estagioReferenteId,
+      },
+      include: [
+        {
+          model: Estudante,
+        },
+        {
+          model: Empresa,
+        },
+        {
+          model: Supervisor,
+        },
+        {
+          model: Professor,
+        },
+      ],
+    });
+    const antigo = estagio.dataValues;
+    let renovacao = [];
+    if (estagio.renovacao) {
+      renovacao = JSON.parse(estagio.renovacao);
+    }
+    renovacao.push(antigo);
+    const formatado = JSON.stringify(renovacao);
+    const renovado = Object.assign(estagio, data);
+    estagio.renovacao = formatado;
+    await estagio.save();
+    console.log(estagio);
   }
 }

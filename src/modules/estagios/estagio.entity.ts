@@ -176,10 +176,10 @@ export class Estagio extends Model<Estagio> {
   @Column({
     allowNull: true,
     field: 'renovacao',
-    type: DataType.JSON,
+    type: DataType.JSONB,
     defaultValue: false,
   })
-  renovacao?: JSON;
+  renovacao?: any;
 
   @Column({
     type: DataType.TEXT,
@@ -200,18 +200,18 @@ export class Estagio extends Model<Estagio> {
   @Column({
     type: DataType.TEXT,
     allowNull: true,
-    field: 'termo_aceite',
+    field: 'termo_compromisso',
     comment: 'relatorios do estudante',
   })
-  termoAceite?: string;
+  termoCompromisso?: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: true,
-    field: 'termo_aceite_url',
+    field: 'termo_compromisso_url',
     comment: 'relatorios do estudante',
   })
-  termoAceiteUrl?: string;
+  termoCompromissoUrl?: string;
 
   @Column({
     type: DataType.TEXT,
@@ -237,6 +237,70 @@ export class Estagio extends Model<Estagio> {
   })
   aceiteOrientadorUrl?: string;
 
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'relatorio1',
+    comment: 'relatorios do estudante',
+  })
+  relatorio1?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'relatorio2',
+    comment: 'relatorios do estudante',
+  })
+  relatorio2?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'relatorio3',
+    comment: 'relatorios do estudante',
+  })
+  relatorio3?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'relatorio1_url',
+    comment: 'relatorios do estudante',
+  })
+  relatorio1Url?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'relatorio2_url',
+    comment: 'relatorios do estudante',
+  })
+  relatorio2Url?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'relatorio3_url',
+    comment: 'relatorios do estudante',
+  })
+  relatorio3Url?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'rescisao',
+    comment: 'rescisao',
+  })
+  rescisao?: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+    field: 'rescisao_url',
+    comment: 'rescisao',
+  })
+  rescisaoUrl?: string;
+
   @HasMany(() => Empresa, {
     foreignKey: 'id',
     sourceKey: 'empresaId',
@@ -254,4 +318,10 @@ export class Estagio extends Model<Estagio> {
     sourceKey: 'supervisorId',
   })
   supervisor: Supervisor;
+
+  @HasMany(() => Professor, {
+    foreignKey: 'id',
+    sourceKey: 'professorId',
+  })
+  professor: Professor;
 }
