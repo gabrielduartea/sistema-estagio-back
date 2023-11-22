@@ -1,6 +1,11 @@
 FROM node:18
 
+WORKDIR /src
 
-RUN yarn
+COPY package*.json ./
 
-CMD ["npm", "start"]
+RUN npm install
+
+COPY . .
+
+RUN npm run build
