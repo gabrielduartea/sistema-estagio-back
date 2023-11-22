@@ -26,8 +26,9 @@ async function bootstrap() {
     allowedHeaders: '*',
     origin: '*',
   });
-
-  await app.listen(3000, '0.0.0.0');
+  const PORT=3000;
+  const HOST= '0.0.0.0'
+  await app.listen(PORT, HOST);
 }
 
 bootstrap();
